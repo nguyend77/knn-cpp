@@ -43,6 +43,9 @@ class DataFrame {
                 if (!ignore) {x.push_back(Feature(table, feature));}
             }
         }
+        void standardScaler() {
+            for (int i = 0; i < x.size(); ++i) {x.at(i).scale();}
+        }
 };
 
 #endif

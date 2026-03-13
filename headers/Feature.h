@@ -4,6 +4,7 @@
 #include "Column.h"
 #include <string>
 #include <vector>
+#include <cmath>
 
 class Feature : public Column {
     private:
@@ -20,7 +21,16 @@ class Feature : public Column {
                 values.push_back(numeric);
             }
         }
-        double getValue(int& i) const {return values.at(i);}
+        void scale() {
+            int n = values.size();
+            double sum = 0.0;
+            for (int i = 0; i < n; ++i) {sum += values.at(i);}
+            double mean = sum/n;
+            double temp = 0.0;
+            for (int i = 0; i < n; ++i) {temp += (values.at(i)-mean)*(values.at(i)-mean);}
+            double stDev = std::sqrt(temp/(n-1));
+            for (int i = 0; i < n; ++i) {values.at(i) = (values.at(i)-mean)/stDev;}
+        }
 };
 
 #endif
