@@ -1,6 +1,6 @@
 #include "Distance.h"
 
-Distance::Distance(double d, string label) {
+Distance::Distance(float d, string label) {
     this->d = d;
     this->label = label;
 }

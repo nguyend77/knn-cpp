@@ -6,10 +6,10 @@ using namespace std;
 
 class Distance {
     private:
-        double d;
+        float d;
         string label;
     public:
-        Distance(double d, string label);
+        Distance(float d, string label);
         string getLabel() const;
         bool operator<(const Distance& other) const;
         bool operator==(const Distance& other) const;

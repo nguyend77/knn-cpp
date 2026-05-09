@@ -31,8 +31,8 @@ vector<string> inputFeatures() {
     return features;
 }
 
-double inputTrainTestSplit() {
-    double trainSize;
+float inputTrainTestSplit() {
+    float trainSize;
     cout << "\nEnter train proportion as a decimal: ";
     cin >> trainSize;
     return trainSize;
@@ -56,7 +56,7 @@ int main() {
     vector<string> features = inputFeatures();
     df.readCSV(filename, target, features);
     df.standardScaler();
-    double trainSize = inputTrainTestSplit();
+    float trainSize = inputTrainTestSplit();
     df.splitTrainTest(trainSize);
     int k = inputK();
     KNN classifier(k, df);

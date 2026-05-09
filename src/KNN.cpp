@@ -35,6 +35,6 @@ void KNN::reportAccuracy() {
         DataPoint unknown = dfPtr->getObservations()[testIndex];
         if (prediction[i] == unknown.getLabel()) {numTrue++;}
     }
-    double accuracy = (100.0*numTrue) / testSize;
+    float accuracy = (100.0*numTrue) / testSize;
     cout << "\nAccuracy: " << accuracy << "% (" << numTrue << "/" << testSize << ")" << endl;
 }

@@ -42,9 +42,9 @@ void DataFrame::readCSV(const string& filename, const string& target, const vect
         vector<std::string> row;
         while (getline(ss, cell, ',')) {row.push_back(cell);}
         string label = row[targetIndex];
-        vector<double> data;
+        vector<float> data;
         for (const size_t& i: featureIndex) {
-            double val = stod(row[i]);
+            float val = stod(row[i]);
             data.push_back(val);
         }
         observations.push_back(DataPoint(label, data));
@@ -55,23 +55,23 @@ void DataFrame::readCSV(const string& filename, const string& target, const vect
 void DataFrame::standardScaler() {
     int width = features.size();
     for (int i = 0; i < width; ++i) {
-        double mean = 0;
-        double stDev = 0;
+        float mean = 0;
+        float stDev = 0;
         for (int j = 0; j < count; ++j) {mean += observations[j].getData()[i];}
         mean /= count;
         for (int j = 0; j < count; ++j) {
-            double diff = observations[j].getData()[i] - mean;
+            float diff = observations[j].getData()[i] - mean;
             stDev += (diff*diff);
         }
         stDev = sqrt(stDev/count);
         for (int j = 0; j < count; ++j) {
-            double scaled = (observations[j].getData()[i] - mean) / stDev;
+            float scaled = (observations[j].getData()[i] - mean) / stDev;
             observations[j].setData(i, scaled);
         }
     }
 }
 
-void DataFrame::splitTrainTest(double trainSize) {
+void DataFrame::splitTrainTest(float trainSize) {
     vector<int> v;
     RandomGenerator rg;
     for (int i = 0; i < count; ++i) {v.push_back(i);}

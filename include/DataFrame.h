@@ -19,7 +19,7 @@ class DataFrame {
         size_t linearSearch(string item, vector<string>& v);
         void readCSV(const string& filename, const string& target, const vector<string>& features);
         void standardScaler();
-        void splitTrainTest(double trainSize = 0.8);
+        void splitTrainTest(float trainSize = 0.8);
 };
 
 #endif
