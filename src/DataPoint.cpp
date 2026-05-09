@@ -13,15 +13,8 @@ void DataPoint::setLabel(string label) {this->label = label;}
 const vector<double>& DataPoint::getData() const {return data;}
 void DataPoint::setData(int i, double val) {data[i] = val;}
 
-Distance DataPoint::calcDistance(const DataPoint &x, char type) const {
+Distance DataPoint::calcDistance(const DataPoint &x) const {
     double d = 0;
-    switch(type) {
-        case 'm':
-            for (size_t i = 0; i < data.size(); ++i) {d += abs(data[i] - x.data[i]);}
-            break;
-        case 'e':
-            for (size_t i = 0; i < data.size(); ++i) {d += (data[i] - x.data[i])*(data[i] - x.data[i]);}
-            break;
-    }
+    for (size_t i = 0; i < data.size(); ++i) {d += abs(data[i] - x.data[i]);}
     return Distance(d, x.label);
 }

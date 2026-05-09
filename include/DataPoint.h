@@ -16,7 +16,7 @@ class DataPoint {
         void setLabel(string label);
         const vector<double>& getData() const;
         void setData(int i, double val);
-        Distance calcDistance(const DataPoint& x, char type) const;
+        Distance calcDistance(const DataPoint& x) const;
 };
 
 #endif

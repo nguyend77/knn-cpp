@@ -10,7 +10,7 @@ class KNN {
         vector<string> prediction;
     public:
         KNN(int k, const DataFrame& df);
-        void predict(char distanceType = 'm');
+        void predict();
         void reportAccuracy();
 };
 

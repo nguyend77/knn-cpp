@@ -8,7 +8,7 @@ KNN::KNN(int k, const DataFrame& df) {
     dfPtr =&df;
 }
 
-void KNN::predict(char distanceType) {
+void KNN::predict() {
     for (size_t i = 0; i < dfPtr->getTest().size(); ++i) {
         size_t testIndex = dfPtr->getTest()[i];
         DataPoint unknown = dfPtr->getObservations()[testIndex];
@@ -16,7 +16,7 @@ void KNN::predict(char distanceType) {
         for (size_t j = 0; j < dfPtr->getTrain().size(); ++j) {
             size_t learnIndex = dfPtr->getTrain()[j];
             DataPoint known = dfPtr->getObservations()[learnIndex];
-            distanceHeap.insert(unknown.calcDistance(known, distanceType));
+            distanceHeap.insert(unknown.calcDistance(known));
         }
         Dictionary choices;
         for (int guess = 0; guess < k; ++guess) {

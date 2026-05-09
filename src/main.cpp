@@ -46,9 +46,9 @@ int inputK() {
 
 int main() {
     cout << "\n";
-    cout << "-------------------------------------------------------\n";
-    cout << "| C++ implementation for kNN classification algorithm |\n";
-    cout << "-------------------------------------------------------\n";
+    cout << "#######################################################\n";
+    cout << "# C++ implementation for kNN classification algorithm #\n";
+    cout << "#######################################################\n";
     DataFrame df;
     string filename = inputFileName();
     string target = inputTarget();
