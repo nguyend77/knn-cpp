@@ -3,6 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
+#include <chrono>
 using namespace std;
 
 string inputFileName() {
@@ -59,7 +60,11 @@ int main() {
     df.splitTrainTest(trainSize);
     int k = inputK();
     KNN classifier(k, df);
+    auto start = std::chrono::steady_clock::now();
     classifier.predict();
+    auto end = std::chrono::steady_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    cout << "\nExecution time: " << duration.count() << " ms" << endl;
     classifier.reportAccuracy();
     return 0;
 }
